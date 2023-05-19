@@ -9,6 +9,7 @@
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}">
         <input type="submit" value="Выйти"/>
+        <h4> личный список пересдач </h4>
     </form>
     <#if user.isAdmin()>
         <a href="/admin">Панель администратора</a>
@@ -24,6 +25,13 @@
         </div>
     </#list>
 </#if>
+    <#if user.isLecturer()>
+        <#list leacturSubjects as leacturSubject>
+            <div>
+                <p><b>${leacturSubject.title}</b></p>
+            </div>
+        </#list>
+    </#if>
 <hr>
 <h4> Список пересдач </h4>
 <form action="/" method="get" >

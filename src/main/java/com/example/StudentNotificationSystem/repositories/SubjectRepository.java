@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface SubjectRepository extends JpaRepository<Subject, Long> { // наследуем все методы (получить, удалить, ...)
     List<Subject> findByTitle(String title);
+
+    List<Subject> findByLecturer(String name);
 }

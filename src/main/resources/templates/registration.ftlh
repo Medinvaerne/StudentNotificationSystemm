@@ -16,5 +16,9 @@
 <#if errorMessage??>
     <h2 style="color: red">${errorMessage}"</h2>
 </#if>
+
+<div class="popup" onclick="myFunction()">Click me!
+    <span class="popuptext" id="myPopup">Popup text...</span>
+</div>
 </body>
 </html>

@@ -29,7 +29,12 @@ public class NotificationController {
         User userByPrincipal = subjectService.getUserByPrincipal(principal);
         if (userByPrincipal.isStudent()){
             model.addAttribute("retakes", userByPrincipal.getSubjects());
+
+
+        } else if(userByPrincipal.isLecturer()){
+            model.addAttribute("leacturSubjects", subjectService.lectorSubjectList(userByPrincipal.getName()));
         }
+
         model.addAttribute("user", subjectService.getUserByPrincipal(principal));
 
         return "notifications";
@@ -43,8 +48,6 @@ public class NotificationController {
 
         return "subject-info";
     }
-
-
 
     @PostMapping("/subject/create")
     public String createSubject(@RequestParam(name = "email") String email,Subject subject, Principal principal) {

@@ -27,12 +27,6 @@ public class Subject {
     @Column(name = "time")
     private String time;
 
-    /*@ManyToMany
-    @JoinTable(name = "subject_student",
-            joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
-    private List <User> student;*/
-
     @ManyToOne
     @JoinColumn
     private User user;

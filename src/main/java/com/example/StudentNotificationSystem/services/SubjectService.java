@@ -43,4 +43,7 @@ public class SubjectService {
     }
 
 
+    public List<Subject> lectorSubjectList(String name) {
+        return subjectRepository.findByLecturer(name);
+    }
 }

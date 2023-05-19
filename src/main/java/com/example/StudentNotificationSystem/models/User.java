@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.util.*;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "users")
@@ -15,8 +16,11 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @Email
     @Column(name = "email", unique = true)
     private String email;
+    @NotBlank
+    @Size(min = 2, max = 100, message = "имя должно находиться в диапазоне от 1 до 50 символов")
     @Column(name = "name")
     private String name;
     @Column(name = "active")
@@ -36,6 +40,8 @@ public class User implements UserDetails {
     }
     public boolean isTeacher() { return roles.contains(Role.ROLE_TEACHER); }
     public boolean isStudent() { return roles.contains(Role.ROLE_STUDENT); }
+
+    public boolean isLecturer() { return roles.contains(Role.ROLE_LECTURER); }
 
     /*@ManyToMany(mappedBy = "student",
             cascade = {CascadeType.PERSIST, CascadeType.MERGE})
